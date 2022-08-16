@@ -1,7 +1,7 @@
 <template>
     <li @mouseover="todolis=true" @mouseout="todolis=false" :class="{ active:todolis}">
       <label>
-        <input type="checkbox" />
+        <input type="checkbox" @change="changeli" />
         <span>{{todo.title}}</span>
       </label>
       <button class="btn btn-danger"
@@ -14,7 +14,7 @@
 <script>
 export default {
   name: 'Item',
-  props: ['todo','removeli'],
+  props: ['todo','removeli','changeTodo',],
   data() {
     return {
     todolis:false
@@ -24,7 +24,11 @@ export default {
     removelis() {
    this.removeli(this.todo.id)
 
-    }
+    },
+    changeli() {
+     this.changeTodo(this.todo.id)
+    },
+   
  }
   
 }

@@ -6,6 +6,8 @@
       :key="todo.id" 
       :todo="todo"
       :removeli="removeli"
+      :changeTodo="changeTodo"
+   
       ></Item>
     </ul>
   </div>
@@ -18,7 +20,7 @@ export default {
   components:{
     Item
   },
-  props:['todos','removeli']
+  props:['todos','removeli','changeTodo',' clearlist']
 
 }
 </script>

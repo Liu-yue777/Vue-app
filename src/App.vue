@@ -3,11 +3,15 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <Header :addlist="addlist"></Header>
-        <List 
-        :todos="todos"
-        :removeli="removeli"
-        ></List>
-        <Footer></Footer>
+        <List :changeTodo="changeTodo" 
+        :todos="todos" 
+        :removeli="removeli" 
+       
+       ></List>
+        <Footer
+        :todo="todos"
+        :clearAllDone="clearAllDone"
+        ></Footer>
       </div>
     </div>
   </div>
@@ -26,13 +30,15 @@ export default {
   },
   data() {
     return {
-      todos: [
-        { id: 1, title: 'THESHY', done: false },
-        { id: 2, title: '小虎', done: true },
-        { id: 3, title: 'gaola', done: true },
-        { id: 4, title: '小明', done: true },
-      ]
+      // todos: [
+      //   { id: 1, title: 'THESHY', done: false },
+      //   { id: 2, title: '小虎', done: true },
+      //   { id: 3, title: 'gaola', done: true },
+      //   { id: 4, title: '小明', done: true },
+      // ]
+      todos:JSON.parse(localStorage.getItem('todos'))||[]
     }
+
   },
   //数据在哪里更该 方法就在哪里
   methods: {
@@ -47,10 +53,26 @@ export default {
       }
     },
     removeli(id) {
-    this.todos=this.todos.filter((item)=>item.id!==id)
+      this.todos = this.todos.filter((item) => item.id !== id)
+    },
+    changeTodo(id) {
+      this.todos.forEach(item => {
+        if (item.id == id) item.done = !item.done
+      });
+    },
+      // 清除已完成的
+    clearAllDone(){
+      this.todos = this.todos.filter(item=>!item.done)
+    }
+  },
+  wath: {
+    todos: {
+      handler(newval, loaval) {
+        localStorage.setItem('todos',JSON.stringify(this.todos))
+      }
+    }
   }
-  }
-  
+
 }
 </script>
 
