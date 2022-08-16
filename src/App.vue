@@ -3,7 +3,10 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <Header :addlist="addlist"></Header>
-        <List :todos="todos"></List>
+        <List 
+        :todos="todos"
+        :removeli="removeli"
+        ></List>
         <Footer></Footer>
       </div>
     </div>
@@ -42,8 +45,12 @@ export default {
       } else {
         alert('重复内容请重新输入')
       }
-    }
+    },
+    removeli(id) {
+    this.todos=this.todos.filter((item)=>item.id!==id)
   }
+  }
+  
 }
 </script>
 

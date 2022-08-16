@@ -4,18 +4,27 @@
         <input type="checkbox" />
         <span>{{todo.title}}</span>
       </label>
-      <button class="btn btn-danger" v-show="todolis">删除</button>
+      <button class="btn btn-danger"
+       v-show="todolis"
+       @click="removelis"
+       >删除</button>
     </li>
 </template>
 
 <script>
 export default {
   name: 'Item',
-  props: ['todo'],
+  props: ['todo','removeli'],
   data() {
     return {
     todolis:false
   }
+  },
+  methods: {
+    removelis() {
+   this.removeli(this.todo.id)
+
+    }
  }
   
 }
