@@ -13,7 +13,7 @@ export default {
   components:{
     Item
   },
-  props:['todos']
+  props:['todos',]
 
 }
 </script>

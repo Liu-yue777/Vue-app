@@ -1,15 +1,38 @@
 <template>
   <div>
     <div class="todo-header">
-      <input type="text" placeholder="请输入你的任务名称，按回车键确认" />
+      <input @keyup.enter="headeadd" type="text" placeholder="请输入你的任务名称，按回车键确认" v-model="addls" />
     </div>
   </div>
 </template>
 
 <script>
+import { nanoid } from 'nanoid'
 export default {
   name: 'Header',
+  props: ['addlist'],
+  data() {
+    return {
+      addls: ''
+    }
+  },
+  methods: {
+    headeadd() {
+      if (!this.addls.trim()) {
+        alert('输入的内容不能为空')
+      } else {
+
+        let newadd = { id: nanoid(), title: this.addls, done: false }
+
+        this.addlist(newadd)
+      }
+
+
+      this.addls = ''
+    }
+  }
 }
+
 </script>
 
 <style scoped>

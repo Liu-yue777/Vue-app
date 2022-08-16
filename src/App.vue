@@ -2,7 +2,7 @@
   <div>
     <div class="todo-container">
       <div class="todo-wrap">
-        <Header></Header>
+        <Header :addlist="addlist"></Header>
         <List :todos="todos"></List>
         <Footer></Footer>
       </div>
@@ -27,7 +27,21 @@ export default {
         { id: 1, title: 'THESHY', done: false },
         { id: 2, title: '小虎', done: true },
         { id: 3, title: 'gaola', done: true },
+        { id: 4, title: '小明', done: true },
       ]
+    }
+  },
+  //数据在哪里更该 方法就在哪里
+  methods: {
+    addlist(val) {
+      let flag = this.todos.some((item) => {
+        return item.title === val.title
+      })
+      if (!flag) {
+        this.todos.unshift(val)
+      } else {
+        alert('重复内容请重新输入')
+      }
     }
   }
 }
