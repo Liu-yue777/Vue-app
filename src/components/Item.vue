@@ -1,17 +1,23 @@
 <template>
-    <li>
+    <li @mouseover="todolis=true" @mouseout="todolis=false" :class="{ active:todolis}">
       <label>
         <input type="checkbox" />
         <span>{{todo.title}}</span>
       </label>
-      <button class="btn btn-danger">删除</button>
+      <button class="btn btn-danger" v-show="todolis">删除</button>
     </li>
 </template>
 
 <script>
 export default {
   name: 'Item',
-  props:['todo']
+  props: ['todo'],
+  data() {
+    return {
+    todolis:false
+  }
+ }
+  
 }
 </script>
 
@@ -39,7 +45,7 @@ li label li input {
 
 li button {
   float: right;
-  display: none;
+  /*display: none;*/
   margin-top: 3px;
 }
 
@@ -49,5 +55,9 @@ li:before {
 
 li:last-child {
   border-bottom: none;
+}
+li.active{
+
+  background-color: #ccc;
 }
 </style>

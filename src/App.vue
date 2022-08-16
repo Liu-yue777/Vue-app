@@ -3,9 +3,7 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <Header></Header>
-
         <List :todos="todos"></List>
-
         <Footer></Footer>
       </div>
     </div>
@@ -26,9 +24,9 @@ export default {
   data() {
     return {
       todos: [
-        { id: 1, title: '要和漂亮的女同事去吃饭', done: false },
-        { id: 2, title: '陪静静去喝酒', done: true },
-        { id: 3, title: '拒绝掉陶陶洗脚的邀请', done: true },
+        { id: 1, title: 'THESHY', done: false },
+        { id: 2, title: '小虎', done: true },
+        { id: 3, title: 'gaola', done: true },
       ]
     }
   }
